@@ -14,7 +14,7 @@
 
 * Docker images:
     * An image is the result of applying an specification to configure a Docker container.
-    * Docker uses a ``Dockerfile`` as the definition of the image
+    * Docker uses a ``Dockerfile`` as the definition of the image. [Dockerfile instructions reference](https://docs.docker.com/engine/reference/builder/)
     * An image can be runned in one or many containers.
     * An image should be working by itself as a self-contained application
     * Docker allows you to creates a container on top of different images.
@@ -25,7 +25,7 @@
 
 * Docker Compose:
     * Docker compose is a service orchestrator. Allows you to connect different Docker containers in an isolated environment.
-    * It uses a ``docker-compose.yml`` file as the definition of the services  
+    * It uses a ``docker-compose.yml`` file as the definition of the services. [Docker Compose Reference](    * It uses a ``docker-compose.yml`` file as the definition of the services. [Docker Compose Reference](https://docs.docker.com/compose/compose-file/)
     
 * Good practices:
     * Docker nature is to be stateless. Saving data inside a container (a backup file) is not a good idea, Docker containers should always run with the assumption that the data that uses never comes from inside the container.
