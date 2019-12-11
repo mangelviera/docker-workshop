@@ -23,31 +23,58 @@
     * Docker checks if there are changes on the layers and skip the execution of the current command if not.
     * We can tag an image on docker. That allows us to use it in every place with that tag name. Ex: Dockerfile, docker commands, docker-compose
     * DockerHub is a repository of many different Docker images that we can download and use them to build our containers [DockerHub](http://hub.docker.com)
+    * Dockerfile example:
+        ```
+        FROM any-image:1.x.x
+        RUN mkdir /app
+        WORKDIR /app
+        COPY . .
+        RUN npm install
+        CMD ["node", "app.js"]
+        ```
     
 * Containers:
     * A container is a unit of embedded software that contains the software itself with its dependencies as a self-executable.
     * Containers in docker are the execution of the definition of a Docker image.
     * Containers run isolated from the host. Its possible to connect to them through the Docker Engine. Ex: port mapping, volumes
     * Containers are ephemeral. Think of them to be run and stopped. The data inside a container is volatile and when the container is destroyed the data is destroyed too.
-    * 
+    * Is possible to connect the physical data on the host with the data on the container using a volume. That volume will remain even if the container is destroyed. To create it is enough to execute the docker image specifying the directory where you want to mount the volume in the host and in the containers: Ex: `docker run -v ./volume:/any-folder/node_modules -it any-docker-image-tag`
 
 * Multistage Builds:
     * Docker has a feature that allows to use an intermediate image to build the executable and copy it from it to a new image where is going to be executed. This allows to have smaller images without dev dependencies in a clean environment.
-    ```
-    FROM any-docker-image:1.x.x AS build
-    COPY . .
-    RUN mvn package
-    
-    FROM any-docker-image-alpine:1.x.x AS app
-    COPY --from=build app-name.war .
-    CMD ["java", "-cp", "com.any_company_name.app.Application"]
-    ```
+        ```
+        FROM any-docker-image:1.x.x AS build
+        COPY . .
+        RUN mvn package
+        
+        FROM any-docker-image-alpine:1.x.x AS app
+        COPY --from=build app-name.war .
+        CMD ["java", "-cp", "com.any_company_name.app.Application"]
+        ```
 
 * Docker Compose:
     * Docker compose is a service orchestrator. Allows you to connect different Docker containers in an isolated environment.
     * It uses a ``docker-compose.yml`` file as the definition of the services. [Docker Compose Reference](https://docs.docker.com/compose/compose-file/)
     * Docker compose creates an isolated environment on the host by each `docker-compose.yml` file. Which means that a cluster of services raised by one compose and another cannot communicate between them implicitly.
     * Docker compose handles the port mappings of each services. In the subnet that the apps and services contained 
+    ![Docker-compose map](http://www.patricksoftwareblog.com/wp-content/uploads/2017/06/Docker-Application-Architecture-2.png)
+    * Example of docker-compose:
+        ```
+        version: '3.7'
+        services:
+            app:
+                build:
+                    context: .
+                depends:
+                    - dependency
+                ports:
+                    - 8080:8080
+            dependency:
+                image: any-docker-image:1.x.x
+                ports:
+                    - 3307:3306
+        ```
+    * The services URL is the same as the name defined in the docker-compose file.
     
 * Good practices:
     * Docker nature is to be stateless. Saving data inside a container (a backup file) is not a good idea, Docker containers should always run with the assumption that the data that uses never comes from inside the container.
