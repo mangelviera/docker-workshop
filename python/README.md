@@ -1,7 +1,7 @@
 # Hello world WebApp in Python with Docker
 
-* Declare a Dockerfile in the root of this project:
-* Paste this content:
+* Create a Dockerfile in the root of this project:
+* Paste this content inside:
     ```
     FROM python:3.8-alpine3.10
     RUN mkdir /app
