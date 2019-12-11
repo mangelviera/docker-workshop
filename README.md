@@ -32,6 +32,7 @@
         RUN npm install
         CMD ["node", "app.js"]
         ```
+      ![Docker layers](https://blog.risingstack.com/content/images/2019/08/docker-layers.png)
     
 * Containers:
     * A container is a unit of embedded software that contains the software itself with its dependencies as a self-executable.
