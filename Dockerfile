@@ -1,10 +1,10 @@
-FROM python:3.8-alpine3.10
+FROM node:13.3.0-alpine3.10
 RUN mkdir /app
 WORKDIR /app
 ENV PORT 8080
 
-COPY python/ .
+COPY node/ .
 
-RUN pip install -r requirements.txt
+RUN npm install
 
-CMD ["python", "app.py"]
+CMD ["node", "app.js"]
