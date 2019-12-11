@@ -9,7 +9,7 @@
     * VMs uses an interface called Hypervisor, which virtualizes the host hardware on the operative system contained in the Virtual Machine
     * Docker runs faster and smoothly than VMs and consume less host resources which allows them to be very reusable and flexible
 
-![Docker](https://www.itdo.com/blog/content/images/2019/02/comparacion-container-docker_By_0WBFrV.jpg)
+![Docker](https://github.com/Groxalf/docker-workshop/blob/master/img/docker-vs-vms.jpg?raw=true)
 
 
 * Docker images:
@@ -57,7 +57,7 @@
     * It uses a ``docker-compose.yml`` file as the definition of the services. [Docker Compose Reference](https://docs.docker.com/compose/compose-file/)
     * Docker compose creates an isolated environment on the host by each `docker-compose.yml` file. Which means that a cluster of services raised by one compose and another cannot communicate between them implicitly.
     * Docker compose handles the port mappings of each services. In the subnet that the apps and services contained 
-    ![Docker-compose map](http://www.patricksoftwareblog.com/wp-content/uploads/2017/06/Docker-Application-Architecture-2.png)
+    ![Docker-compose map](https://raw.githubusercontent.com/Groxalf/docker-workshop/master/img/docker-compose-architecture.png)
     * Example of docker-compose:
         ```
         version: '3.7'
