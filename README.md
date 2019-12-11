@@ -39,6 +39,7 @@
     * Containers run isolated from the host. Its possible to connect to them through the Docker Engine. Ex: port mapping, volumes
     * Containers are ephemeral. Think of them to be run and stopped. The data inside a container is volatile and when the container is destroyed the data is destroyed too.
     * Is possible to connect the physical data on the host with the data on the container using a volume. That volume will remain even if the container is destroyed. To create it is enough to execute the docker image specifying the directory where you want to mount the volume in the host and in the containers: Ex: `docker run -v ./volume:/any-folder/node_modules -it any-docker-image-tag`
+    ![Volumes](https://docs.docker.com/storage/images/types-of-mounts-bind.png)
 
 * Multistage Builds:
     * Docker has a feature that allows to use an intermediate image to build the executable and copy it from it to a new image where is going to be executed. This allows to have smaller images without dev dependencies in a clean environment.
