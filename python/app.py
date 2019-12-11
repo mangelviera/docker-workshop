@@ -1,5 +1,5 @@
-from flask import Flask
 import os
+from flask import Flask
 
 PORT = os.environ["PORT"]
 
@@ -11,4 +11,4 @@ def base_route():
 
 
 if __name__ == "__main__":
-    app.run(port=PORT)
+    app.run(port=PORT, host='0.0.0.0')
