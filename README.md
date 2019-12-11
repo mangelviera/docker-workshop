@@ -28,7 +28,8 @@
     * A container is a unit of embedded software that contains the software itself with its dependencies as a self-executable.
     * Containers in docker are the execution of the definition of a Docker image.
     * Containers run isolated from the host. Its possible to connect to them through the Docker Engine. Ex: port mapping, volumes
-    * Containers data are volatile. If you run an instance of a docker image and delete it the data contained in that Docker is deleted.
+    * Containers are ephemeral. Think of them to be run and stopped. The data inside a container is volatile and when the container is destroyed the data is destroyed too.
+    * 
 
 * Multistage Builds:
     * Docker has a feature that allows to use an intermediate image to build the executable and copy it from it to a new image where is going to be executed. This allows to have smaller images without dev dependencies in a clean environment.
@@ -44,10 +45,15 @@
 
 * Docker Compose:
     * Docker compose is a service orchestrator. Allows you to connect different Docker containers in an isolated environment.
-    * It uses a ``docker-compose.yml`` file as the definition of the services. [Docker Compose Reference](    * It uses a ``docker-compose.yml`` file as the definition of the services. [Docker Compose Reference](https://docs.docker.com/compose/compose-file/)
+    * It uses a ``docker-compose.yml`` file as the definition of the services. [Docker Compose Reference](https://docs.docker.com/compose/compose-file/)
+    * Docker compose creates an isolated environment on the host by each `docker-compose.yml` file. Which means that a cluster of services raised by one compose and another cannot communicate between them implicitly.
+    * Docker compose handles the port mappings of each services. In the subnet that the apps and services contained 
     
 * Good practices:
     * Docker nature is to be stateless. Saving data inside a container (a backup file) is not a good idea, Docker containers should always run with the assumption that the data that uses never comes from inside the container.
     * Do not rely on Docker to have a Database engine with a mounted volume in the host-container. Volumes can get corrupted if the container suddenly crashes .
     * Use layers to increase the speed of the image building. Put at the beggining of the Dockerfile those things that change less (like dependency installation), system updates, etc. And at the end what usually changes more.
-    * Use alpine images to run your applications whenever its possible. Alpine images are better to run applications because their small size makes them more flexible/fast/debuggable than their Ubuntu/CentOS/Debian relatives.   
+    * Build the smallest images possible. Use alpine images to run your applications whenever its possible. Alpine images are better to run applications because their small size makes them more flexible/fast/debuggable than their Ubuntu/CentOS/Debian relatives.
+    * Use `.dockerignore to avoid checking changes over files that are not important for the building pipeline. And when building the context to spend less time sending it to the Docker Engine.
+    * Best practices for Dockerfile [by Docker](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+    * Tag properly your images. Do not rely on the random naming of docker.
