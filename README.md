@@ -1,7 +1,7 @@
 ## Docker from scratch
 
 * Docker is a tool to package applications in small containers.
-* Those containers are composed by an operative system (Windows, Linux)
+* Those containers are composed by an operative system (Windows, Linux) and the executable that is meant to be run.
 * Docker serves an interface to control how those containers are built and what they do.
 * Differences between Docker and VMs:
     * Docker engine connects directly to OS hardware API
