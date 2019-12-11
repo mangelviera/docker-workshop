@@ -81,6 +81,6 @@
     * Do not rely on Docker to have a Database engine with a mounted volume in the host-container. Volumes can get corrupted if the container suddenly crashes .
     * Use layers to increase the speed of the image building. Put at the beggining of the Dockerfile those things that change less (like dependency installation), system updates, etc. And at the end what usually changes more.
     * Build the smallest images possible. Use alpine images to run your applications whenever its possible. Alpine images are better to run applications because their small size makes them more flexible/fast/debuggable than their Ubuntu/CentOS/Debian relatives.
-    * Use `.dockerignore to avoid checking changes over files that are not important for the building pipeline. And when building the context to spend less time sending it to the Docker Engine.
+    * Use `.dockerignore` to avoid checking changes over files that are not important for the building pipeline. And when building the context to spend less time sending it to the Docker Engine.
     * Best practices for Dockerfile [by Docker](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
     * Tag properly your images. Do not rely on the random naming of docker.
