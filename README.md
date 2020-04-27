@@ -86,3 +86,11 @@
     * Use `.dockerignore` to avoid checking changes over files that are not important for the building pipeline. And when building the context to spend less time sending it to the Docker Engine.
     * Best practices for Dockerfile [by Docker](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
     * Tag properly your images. Do not rely on the random naming of docker.
+    
+## Exercises
+
+1. [WebApp in Python with Docker](./python/README.md)
+
+2. [WebApp in Node with Docker](./node/README.md)
+
+3. [Deploy an app to Heroku](./heroku/README.md)
