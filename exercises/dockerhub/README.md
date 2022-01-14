@@ -5,8 +5,8 @@
 * Use any of the images we used in the previous exercise to push an image to the registry
 * On the root folder of the project use the following commands:
   * `docker login` Enter your DockerHub credentials.
-  * `docker build -t YOUR_DOCKERHUB_REPOSITORY_URL:TAG_NAME`
-  * `docker push -a`
+  * `docker build -t YOUR_DOCKERHUB_REPOSITORY_URL:TAG_NAME .`
+  * `docker push -a YOUR_DOCKERHUB_REPOSITORY_URL:TAG_NAME`
 * If everything has worked properly this is what happened:
   * Docker has build an image with a tag with the url of your repository
   * Docker has pushed that image in the DockerHub registry
